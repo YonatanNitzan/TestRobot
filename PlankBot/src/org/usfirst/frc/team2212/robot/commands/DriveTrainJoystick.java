@@ -10,10 +10,10 @@ import edu.wpi.first.wpilibj.command.Command;
 public class DriveTrainJoystick extends Command {
 
     public DriveTrainJoystick() {
+    	requires(Robot.drivetrain);
     }
 
     protected void initialize() {
-    	requires(Robot.drivetrain);
     }
 
     protected void execute() {
