@@ -39,8 +39,8 @@ public class OI /* GEVALD */ {
 	private void initButtons() {
 		collectButton.toggleWhenPressed(new Collect(Collector.SPEED));
 		shootButton.whenPressed(new Shoot(Shooter.SPEED, 5));
-		armUpButton.toggleWhenPressed(new MoveArm(Arm.SPEED_UP));
-		armDownButton.toggleWhenPressed(new MoveArm(Arm.SPEED_DOWN));
+		armUpButton.whenPressed(new MoveArm(Arm.SPEED_UP));
+		armDownButton.whenPressed(new MoveArm(Arm.SPEED_DOWN));
 	}
 	
 	public double getLeftY() {

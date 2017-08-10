@@ -28,6 +28,7 @@ public class MoveArm extends Command {
     }
 
     protected void end() {
+    	Robot.arm.tryMove(0);
     }
 
     protected void interrupted() {

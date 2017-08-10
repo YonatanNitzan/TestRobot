@@ -27,11 +27,10 @@ public class Arm extends Subsystem {
     }
 
     public boolean canMove(double speed) {
-		return !((speed > 0 && upLimit.get() == true) || (speed < 0 && downLimit.get() == true));
+		return !((speed > 0 && upLimit.get()) || (speed < 0 && downLimit.get()));
     }
     
 	public void initDefaultCommand() {
-		motor.set(0);
 	}
 }
 

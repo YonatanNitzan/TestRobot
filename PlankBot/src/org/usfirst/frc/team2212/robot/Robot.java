@@ -7,6 +7,8 @@ import org.usfirst.frc.team2212.robot.subsystems.Collector;
 import org.usfirst.frc.team2212.robot.subsystems.Drivetrain;
 import org.usfirst.frc.team2212.robot.subsystems.Shooter;
 
+import com.ctre.CANTalon;
+
 import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.VictorSP;
@@ -14,7 +16,6 @@ import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
-import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import util.GearBox;
 
 /**
@@ -31,8 +32,6 @@ public class Robot extends IterativeRobot {
 	public static Shooter shooter;
 	public static Arm arm;
 	public static Drivetrain drivetrain;
-	public static GearBox gearboxLeft;
-	public static GearBox gearboxRight;
 
 	Command autonomousCommand;
 	SendableChooser<Command> chooser = new SendableChooser<>();
@@ -43,18 +42,17 @@ public class Robot extends IterativeRobot {
 	 */
 	@Override
 	public void robotInit() {
-		oi = new OI();
 		// chooser.addObject("My Auto", new MyAutoCommand());
-		SmartDashboard.putData("Auto mode", chooser);
 		collector = new Collector(new VictorSP(RobotMap.PWM.COLLECTOR_PORT));
 		shooter = new Shooter(new VictorSP(RobotMap.PWM.SHOOTER_PORT));
 		arm = new Arm(new VictorSP(RobotMap.PWM.ARM_PORT), new DigitalInput(RobotMap.DIO.LIMIT_UP_PORT), 
 				new DigitalInput(RobotMap.DIO.LIMIT_DOWN_PORT));
-		gearboxLeft = new GearBox(new VictorSP(RobotMap.CAN.LEFT_FRONT_SP_PORT),
-				new VictorSP(RobotMap.CAN.LEFT_REAR_SP_PORT));
-		gearboxRight = new GearBox(new VictorSP(RobotMap.CAN.RIGHT_FRONT_SP_PORT),
-				new VictorSP(RobotMap.CAN.RIGHT_REAR_SP_PORT));
-		drivetrain = new Drivetrain(gearboxLeft, gearboxRight);
+		drivetrain = new Drivetrain(new GearBox(new CANTalon(RobotMap.CAN.LEFT_FRONT_SP_PORT),
+				new CANTalon(RobotMap.CAN.LEFT_REAR_SP_PORT)),
+				new GearBox(new CANTalon(RobotMap.CAN.RIGHT_FRONT_SP_PORT),
+						new CANTalon(RobotMap.CAN.RIGHT_REAR_SP_PORT)));
+		
+		oi = new OI();
 	}
 
 	/**

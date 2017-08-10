@@ -8,9 +8,9 @@ package org.usfirst.frc.team2212.robot;
  */
 public class RobotMap {
 	public interface PWM{
-		public static final int COLLECTOR_PORT = 6;
-		public static final int SHOOTER_PORT = 7;
-		public static final int ARM_PORT = 2;
+		public static final int COLLECTOR_PORT = 2;
+		public static final int SHOOTER_PORT = 1;
+		public static final int ARM_PORT = 0;
 	}
 	
 	public interface CAN {
