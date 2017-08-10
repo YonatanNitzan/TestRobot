@@ -29,6 +29,6 @@ public class DriveByJoystick extends Command {
     }
 
     protected void interrupted() {
-    	end();
+    	
     }
 }

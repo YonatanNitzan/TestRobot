@@ -12,7 +12,6 @@ public class Drivetrain extends Subsystem {
 
 	private GearBox left;
 	private GearBox right;
-	public static final double SPEED = 1;
     
     public Drivetrain(GearBox left, GearBox right) {
     	this.left = left;
@@ -25,7 +24,7 @@ public class Drivetrain extends Subsystem {
     }
     
     public void initDefaultCommand() {
-    	new DriveByJoystick();
+    	setDefaultCommand(new DriveByJoystick());
     }
 }
 
