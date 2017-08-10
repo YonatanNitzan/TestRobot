@@ -7,9 +7,9 @@ import edu.wpi.first.wpilibj.command.Command;
 /**
  *
  */
-public class DriveTrainJoystick extends Command {
+public class DriveByJoystick extends Command {
 
-    public DriveTrainJoystick() {
+    public DriveByJoystick() {
     	requires(Robot.drivetrain);
     }
 
@@ -17,7 +17,7 @@ public class DriveTrainJoystick extends Command {
     }
 
     protected void execute() {
-    	Robot.drivetrain.move(Robot.oi.getLeftY(), Robot.oi.getRightY());
+    	Robot.drivetrain.drive(Robot.oi.getLeftY(), Robot.oi.getRightY());
     }
 
     protected boolean isFinished() {

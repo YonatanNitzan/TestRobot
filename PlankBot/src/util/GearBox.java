@@ -10,7 +10,7 @@ public class GearBox {
 		this.rear = rear;
 	}
 	
-	public void move(double speed) {
+	public void set(double speed) {
 		front.set(speed);
 		rear.set(speed);
 	}
